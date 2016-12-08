@@ -10,7 +10,8 @@ import {
   StyleSheet,
   Text,
   View,
-  Image
+  Image,
+  TextInput
 } from 'react-native';
 
 class Dog_Blink extends Component{
@@ -52,23 +53,32 @@ class Dog_Saying extends Component{
 }
 
 export default class test_init extends Component {
+  constructor(props){
+    super(props);
+    this.state={text_from_input: ' '};
+  }
   render() {
     return (
       <View style={styles.component_containter}>
+        <TextInput 
+          style={{height: 50, width: 250}}
+          placeholder="rofl"
+          onChangeText={(text_from_input) => this.setState({text_from_input})}
+        />
         <View style={styles.container}>
-          <Dog_Blink text='Bjork'/>
+          <Dog_Blink text={this.state.text_from_input}/>
           <Dog_Saying saying='Elizabeth'/>
           <Dog_Saying saying='Bark'/>
         </View>
         <View style={styles.container}>
           <Dog_Saying saying='Cecilia'/>
-          <Dog_Blink text='Woof'/>
+          <Dog_Blink text={this.state.text_from_input}/>
           <Dog_Saying saying='Bark'/>
         </View>
         <View style={styles.container}>
           <Dog_Saying saying='Brian'/>
           <Dog_Saying saying='Bark'/>
-          <Dog_Blink text='COOL'/>
+          <Dog_Blink text={this.state.text_from_input}/>
         </View>
       </View>
     );
